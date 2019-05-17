@@ -14,7 +14,7 @@ namespace HyperfTest;
 
 use Hyperf\Utils\Arr;
 use GuzzleHttp\Client;
-use App\Core\Packers\JsonPacker;
+use Hyperf\Utils\Packer\JsonPacker;
 use Hyperf\Contract\PackerInterface;
 use Psr\Container\ContainerInterface;
 

@@ -10,9 +10,9 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Kernel\Helpers;
+namespace App\Kernel\Helper;
 
-use App\Jobs\AmqpProducerJob;
+use App\Job\AmqpProducerJob;
 use Hyperf\Amqp\Message\ProducerMessageInterface;
 
 class AmqpHelper

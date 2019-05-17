@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Listeners;
+namespace App\Listener;
 
 use Hyperf\Logger\LoggerFactory;
 use Hyperf\AsyncQueue\Event\Event;

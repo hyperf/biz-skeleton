@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Kernel\Helpers;
+namespace App\Kernel\Helper;
 
 use Hyperf\AsyncQueue\JobInterface;
 use Hyperf\AsyncQueue\Driver\DriverFactory;

@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace App\Exception\Handlers;
 
 use Throwable;
-use App\Kernel\Http\Response;
 use App\Constants\ErrorCode;
+use App\Kernel\Http\Response;
 use App\Exception\BusinessException;
 use Psr\Container\ContainerInterface;
 use Hyperf\Framework\ExceptionHandler;

@@ -11,16 +11,16 @@ return [
             ],
         ],
         'aspect' => [
-            'namespace' => 'App\\Aspects',
+            'namespace' => 'App\\Aspect',
         ],
         'command' => [
-            'namespace' => 'App\\Commands',
+            'namespace' => 'App\\Command',
         ],
         'controller' => [
-            'namespace' => 'App\\Controllers',
+            'namespace' => 'App\\Controller',
         ],
         'job' => [
-            'namespace' => 'App\\Jobs',
+            'namespace' => 'App\\Job',
         ],
         'listener' => [
             'namespace' => 'App\\Listeners',
