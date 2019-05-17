@@ -1,7 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Place your dependencies definitions here.
+ * This file is part of Hyperf.
+ *
+ * @link     https://hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
+
 return [
     'dependencies' => [
         // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,

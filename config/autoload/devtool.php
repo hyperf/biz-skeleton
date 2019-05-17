@@ -1,13 +1,23 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ */
+
 return [
     'generator' => [
         'amqp' => [
             'consumer' => [
-                'namespace' => 'App\\Amqp\\Consumers',
+                'namespace' => 'App\\Amqp\\Consumer',
             ],
             'producer' => [
-                'namespace' => 'App\\Amqp\\Producers',
+                'namespace' => 'App\\Amqp\\Producer',
             ],
         ],
         'aspect' => [
@@ -23,10 +33,10 @@ return [
             'namespace' => 'App\\Job',
         ],
         'listener' => [
-            'namespace' => 'App\\Listeners',
+            'namespace' => 'App\\Listener',
         ],
         'middleware' => [
-            'namespace' => 'App\\Middlewares',
+            'namespace' => 'App\\Middleware',
         ],
         'Process' => [
             'namespace' => 'App\\Processes',

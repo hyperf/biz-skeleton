@@ -21,7 +21,7 @@ use Hyperf\Constants\Annotation\Constants;
 class ErrorCode extends AbstractConstants
 {
     /**
-     * @Message("服务器内部错误！")
+     * @Message("Server Error！")
      */
     const SERVER_ERROR = 500;
 }
