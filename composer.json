@@ -75,7 +75,7 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always",
+        "test": "phpunit -c phpunit.xml --colors=always",
         "cs-fix": "php-cs-fixer fix $1",
         "start": "php ./bin/hyperf.php start"
     },
