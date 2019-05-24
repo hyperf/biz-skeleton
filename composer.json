@@ -46,7 +46,7 @@
         "hyperf/utils": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0.0",
+        "phpunit/phpunit": "^7.0",
         "swoft/swoole-ide-helper": "^4.2",
         "phpmd/phpmd": "^2.6",
         "friendsofphp/php-cs-fixer": "^2.14",
@@ -75,7 +75,7 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "test": "phpunit -c phpunit.xml --colors=always",
+        "test": "./test/co-phpunit -c phpunit.xml --colors=always",
         "cs-fix": "php-cs-fixer fix $1",
         "phpstan": "phpstan analyse app --memory-limit 300M -l 0 -c phpstan.neon",
         "start": "php ./bin/hyperf.php start"
