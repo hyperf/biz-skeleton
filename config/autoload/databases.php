@@ -30,7 +30,7 @@ return [
         ],
         'cache' => [
             'handler' => Hyperf\ModelCache\Handler\RedisHandler::class,
-            'cache_key' => 'mc:%s:m:%s:%s:%s',
+            'cache_key' => '{mc:%s:m:%s}:%s:%s',
             'prefix' => 'default',
             'ttl' => 3600 * 24,
             'empty_model_ttl' => 600,
