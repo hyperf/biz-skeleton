@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace App\Job;
 
+use Hyperf\Amqp\Message\ProducerMessageInterface;
 use Hyperf\Amqp\Producer;
 use Hyperf\AsyncQueue\Job;
-use Hyperf\Amqp\Message\ProducerMessageInterface;
 
 class AmqpProducerJob extends Job
 {

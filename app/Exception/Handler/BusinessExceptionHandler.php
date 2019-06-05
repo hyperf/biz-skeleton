@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace App\Exception\Handler;
 
-use Throwable;
 use App\Constants\ErrorCode;
-use App\Kernel\Http\Response;
 use App\Exception\BusinessException;
-use Psr\Container\ContainerInterface;
-use Hyperf\Framework\ExceptionHandler;
-use Psr\Http\Message\ResponseInterface;
+use App\Kernel\Http\Response;
 use Hyperf\Contract\StdoutLoggerInterface;
+use Hyperf\Framework\ExceptionHandler;
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Throwable;
 
 class BusinessExceptionHandler extends ExceptionHandler
 {

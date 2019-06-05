@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace App\Kernel\Log;
 
-use Psr\Container\ContainerInterface;
 use Hyperf\Logger\LoggerFactory as HyperfLoggerFactory;
+use Psr\Container\ContainerInterface;
 
 class LoggerFactory
 {

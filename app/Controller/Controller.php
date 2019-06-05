@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Kernel\Http\Response;
-use Psr\Container\ContainerInterface;
 use Hyperf\HttpServer\Contract\RequestInterface;
+use Psr\Container\ContainerInterface;
 
 abstract class Controller
 {

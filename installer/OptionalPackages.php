@@ -12,17 +12,17 @@ declare(strict_types=1);
 
 namespace Installer;
 
-use Composer\Factory;
 use Composer\Composer;
-use FilesystemIterator;
-use Composer\Package\Link;
-use Composer\Json\JsonFile;
+use Composer\Factory;
 use Composer\IO\IOInterface;
-use RecursiveIteratorIterator;
-use RecursiveDirectoryIterator;
+use Composer\Json\JsonFile;
 use Composer\Package\BasePackage;
+use Composer\Package\Link;
 use Composer\Package\RootPackageInterface;
 use Composer\Package\Version\VersionParser;
+use FilesystemIterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 class OptionalPackages
 {

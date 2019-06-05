@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace HyperfTest;
 
-use Hyperf\Utils\Arr;
 use GuzzleHttp\Client;
-use Hyperf\Utils\Packer\JsonPacker;
 use Hyperf\Contract\PackerInterface;
+use Hyperf\Utils\Arr;
+use Hyperf\Utils\Packer\JsonPacker;
 use Psr\Container\ContainerInterface;
 
 class HttpClient
@@ -49,7 +49,7 @@ class HttpClient
     {
         $response = $this->client->get($uri, [
             'headers' => $headers,
-            'query' => $data
+            'query' => $data,
         ]);
         return $this->packer->unpack($response->getBody()->getContents());
     }

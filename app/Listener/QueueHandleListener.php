@@ -12,15 +12,15 @@ declare(strict_types=1);
 
 namespace App\Listener;
 
-use Hyperf\Logger\LoggerFactory;
-use Hyperf\AsyncQueue\Event\Event;
-use Hyperf\Event\Annotation\Listener;
-use Psr\Container\ContainerInterface;
 use Hyperf\AsyncQueue\Event\AfterHandle;
-use Hyperf\AsyncQueue\Event\RetryHandle;
 use Hyperf\AsyncQueue\Event\BeforeHandle;
+use Hyperf\AsyncQueue\Event\Event;
 use Hyperf\AsyncQueue\Event\FailedHandle;
+use Hyperf\AsyncQueue\Event\RetryHandle;
+use Hyperf\Event\Annotation\Listener;
 use Hyperf\Event\Contract\ListenerInterface;
+use Hyperf\Logger\LoggerFactory;
+use Psr\Container\ContainerInterface;
 
 /**
  * @Listener
