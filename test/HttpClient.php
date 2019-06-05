@@ -47,11 +47,9 @@ class HttpClient
 
     public function get($uri, $data = [], $headers = [])
     {
-        if ($data) {
-            $uri .= '?' . http_build_query($data);
-        }
         $response = $this->client->get($uri, [
             'headers' => $headers,
+            'query' => $data
         ]);
         return $this->packer->unpack($response->getBody()->getContents());
     }

@@ -31,7 +31,7 @@ class ExampleTest extends HttpTestCase
         $this->assertSame('GET', $res['data']['method']);
         $this->assertSame('Hyperf', $res['data']['user']);
 
-        $res = $this->get('/?user=limx');
+        $res = $this->get('/', ['user' => 'limx']);
 
         $this->assertSame(0, $res['code']);
         $this->assertSame('limx', $res['data']['user']);
