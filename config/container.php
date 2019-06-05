@@ -13,11 +13,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-use Hyperf\Di\Container;
 use Hyperf\Config\ProviderConfig;
 use Hyperf\Di\Annotation\Scanner;
-use Hyperf\Utils\ApplicationContext;
+use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSource;
+use Hyperf\Utils\ApplicationContext;
 
 $configFromProviders = ProviderConfig::load();
 $definitions = include __DIR__ . '/dependencies.php';
