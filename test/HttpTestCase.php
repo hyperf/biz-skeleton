@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace HyperfTest;
 
-use Hyperf\Contract\ConfigInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,11 +24,6 @@ use PHPUnit\Framework\TestCase;
 abstract class HttpTestCase extends TestCase
 {
     /**
-     * @var ConfigInterface
-     */
-    protected $config;
-
-    /**
      * @var HttpClient
      */
     protected $client;
@@ -37,7 +31,6 @@ abstract class HttpTestCase extends TestCase
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        $this->config = di()->get(ConfigInterface::class);
         $this->client = make(HttpClient::class, ['baseUri' => 'http://127.0.0.1:9501']);
     }
 
