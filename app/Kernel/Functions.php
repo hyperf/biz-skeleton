@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
+use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
 use Hyperf\Utils\ApplicationContext;
 
 if (! function_exists('di')) {
@@ -37,14 +38,6 @@ if (! function_exists('format_throwable')) {
      */
     function format_throwable(Throwable $throwable): string
     {
-        return sprintf(
-            "%s:%s(%s) in %s:%s\nStack trace:\n%s",
-            get_class($throwable),
-            $throwable->getMessage(),
-            $throwable->getCode(),
-            $throwable->getFile(),
-            $throwable->getLine(),
-            $throwable->getTraceAsString()
-        );
+        return di()->get(FormatterInterface::class)->format($throwable);
     }
 }
