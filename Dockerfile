@@ -5,7 +5,7 @@
 # @contact  group@hyperf.io
 # @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
 
-FROM hyperf-cloud/hyperf:7.2-cli-alpine
+FROM hyperf/hyperf:7.2-alpine-cli
 LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
 
 ##
@@ -15,7 +15,7 @@ LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MI
 ARG timezone
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
-    COMPOSER_VERSION=1.8.5 \
+    COMPOSER_VERSION=1.8.6 \
     APP_ENV=prod
 
 # update
@@ -26,7 +26,6 @@ RUN set -ex \
     && wget https://github.com/composer/composer/releases/download/${COMPOSER_VERSION}/composer.phar \
     && chmod u+x composer.phar \
     && mv composer.phar /usr/local/bin/composer \
-    && composer self-update --clean-backups \
     # show php version and extensions
     && php -v \
     && php -m \
@@ -50,10 +49,10 @@ COPY . /opt/www
 
 WORKDIR /opt/www
 
-#RUN composer install --no-dev \
-#    && composer dump-autoload -o \
-#    && php /opt/www/bin/hyperf.php di:init-proxy
+RUN composer install --no-dev \
+    && composer dump-autoload -o \
+    && php /opt/www/bin/hyperf.php di:init-proxy
 
 EXPOSE 9501
 
-#ENTRYPOINT ["php", "/opt/www/bin/hyperf.php", "start"]
+ENTRYPOINT ["php", "/opt/www/bin/hyperf.php", "start"]
