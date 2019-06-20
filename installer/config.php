@@ -13,22 +13,22 @@ declare(strict_types=1);
 return [
     'packages' => [
         'hyperf/json-rpc' => [
-            'version' => 'dev-master',
+            'version' => '~1.0.0',
         ],
         'hyperf/rpc' => [
-            'version' => 'dev-master',
+            'version' => '~1.0.0',
         ],
         'hyperf/rpc-client' => [
-            'version' => 'dev-master',
+            'version' => '~1.0.0',
         ],
         'hyperf/rpc-server' => [
-            'version' => 'dev-master',
+            'version' => '~1.0.0',
         ],
         'hyperf/grpc-client' => [
-            'version' => 'dev-master',
+            'version' => '~1.0.0',
         ],
         'hyperf/grpc-server' => [
-            'version' => 'dev-master',
+            'version' => '~1.0.0',
         ],
     ],
     'require-dev' => [
