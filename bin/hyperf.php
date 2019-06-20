@@ -9,9 +9,6 @@ date_default_timezone_set('Asia/Shanghai');
 
 ! defined('BASE_PATH') && define('BASE_PATH', dirname(__DIR__, 1));
 
-// TODO: Later move to the right place
-\Swoole\Runtime::enableCoroutine(true);
-
 require BASE_PATH . '/vendor/autoload.php';
 
 // Self-called anonymous function that creates its own scope and keep the global namespace clean.
