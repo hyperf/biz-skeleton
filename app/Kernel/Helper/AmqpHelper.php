@@ -12,14 +12,15 @@ declare(strict_types=1);
 
 namespace App\Kernel\Helper;
 
-use App\Job\AmqpProducerJob;
 use Hyperf\Amqp\Message\ProducerMessageInterface;
+use Hyperf\Amqp\Producer;
 
 class AmqpHelper
 {
-    public static function produce(ProducerMessageInterface $message)
+    public static function produce(ProducerMessageInterface $message, $retry = 2)
     {
-        $job = new AmqpProducerJob($message);
-        return QueueHelper::push($job);
+        return retry($retry, function () use ($message) {
+            return di()->get(Producer::class)->produce($message, true);
+        });
     }
 }
