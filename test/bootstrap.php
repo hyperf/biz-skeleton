@@ -18,4 +18,6 @@ error_reporting(E_ALL);
 
 require BASE_PATH . '/vendor/autoload.php';
 
-require BASE_PATH . '/config/container.php';
+$container = require BASE_PATH . '/config/container.php';
+
+$container->get(\Hyperf\Contract\ApplicationInterface::class);
