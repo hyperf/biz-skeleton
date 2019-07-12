@@ -27,7 +27,7 @@ class QueueHelper
     public static function delay(JobInterface $job, int $delay, $name = 'default')
     {
         $driver = self::getDriver($name);
-        return $driver->delay($job, $delay);
+        return $driver->push($job, $delay);
     }
 
     private static function getDriver($name): DriverInterface
