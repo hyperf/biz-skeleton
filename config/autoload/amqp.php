@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 return [
     'default' => [
-        'host' => 'localhost',
-        'port' => 5672,
-        'user' => 'guest',
-        'password' => 'guest',
+        'host' => env('AMQP_HOST', 'localhost'),
+        'port' => (int) env('AMQP_PORT', 5672),
+        'user' => env('AMQP_USER', 'guest'),
+        'password' => env('AMQP_PASSWORD', 'guest'),
         'vhost' => '/',
         'pool' => [
             'min_connections' => 1,
