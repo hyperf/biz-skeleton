@@ -47,8 +47,11 @@ RUN set -ex \
 
 WORKDIR /opt/www
 
-COPY . /opt/www
+# Composer Cache
+# COPY ./composer.* /opt/www/
+# RUN composer install --no-dev
 
+COPY . /opt/www
 RUN composer install --no-dev \
     && composer dump-autoload -o \
     && php /opt/www/bin/hyperf.php di:init-proxy
