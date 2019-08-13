@@ -15,10 +15,10 @@ date_default_timezone_set('Asia/Shanghai');
 
 ! defined('BASE_PATH') && define('BASE_PATH', dirname(__DIR__, 1));
 
-\Swoole\Runtime::enableCoroutine(true);
+Swoole\Runtime::enableCoroutine(true);
 
 require BASE_PATH . '/vendor/autoload.php';
 
 $container = require BASE_PATH . '/config/container.php';
 
-$container->get(\Hyperf\Contract\ApplicationInterface::class);
+$container->get(Hyperf\Contract\ApplicationInterface::class);
