@@ -43,6 +43,8 @@ return [
                 'force_casts' => true,
                 'inheritance' => 'Model',
                 'uses' => '',
+                'refresh-fillable' => true,
+                'table-mapping' => [],
             ],
         ],
     ],
