@@ -17,6 +17,9 @@ return [
         'user' => env('AMQP_USER', 'guest'),
         'password' => env('AMQP_PASSWORD', 'guest'),
         'vhost' => '/',
+        'concurrent' => [
+            'limit' => 2,
+        ],
         'pool' => [
             'min_connections' => 1,
             'max_connections' => 10,
