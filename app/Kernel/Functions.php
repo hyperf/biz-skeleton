@@ -37,8 +37,6 @@ if (! function_exists('di')) {
 if (! function_exists('format_throwable')) {
     /**
      * Format a throwable to string.
-     * @param Throwable $throwable
-     * @return string
      */
     function format_throwable(Throwable $throwable): string
     {
