@@ -52,8 +52,7 @@ WORKDIR /opt/www
 
 COPY . /opt/www
 RUN composer install --no-dev \
-    && composer dump-autoload -o \
-    && composer init-proxy
+    && composer dump-autoload -o
 
 EXPOSE 9501
 
