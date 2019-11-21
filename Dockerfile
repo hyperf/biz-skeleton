@@ -51,8 +51,7 @@ WORKDIR /opt/www
 # RUN composer install --no-dev
 
 COPY . /opt/www
-RUN composer install --no-dev \
-    && composer dump-autoload -o
+RUN composer install --no-dev -o
 
 EXPOSE 9501
 
