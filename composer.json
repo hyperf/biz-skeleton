@@ -73,11 +73,14 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "test": "co-phpunit -c phpunit.xml --colors=always",
-        "cs-fix": "php-cs-fixer fix $1",
+        "post-autoload-dump": [
+            "init-proxy.sh"
+        ],
         "analyse": "phpstan analyse --memory-limit 300M -l 0 -c phpstan.neon ./app ./config",
+        "cs-fix": "php-cs-fixer fix $1",
+        "init-proxy": "init-proxy.sh",
         "start": "php ./bin/hyperf.php start",
-        "init-proxy": "init-proxy.sh"
+        "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
         "packagist": {
