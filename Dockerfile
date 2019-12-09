@@ -28,6 +28,7 @@ RUN set -ex \
     # show php version and extensions
     && php -v \
     && php -m \
+    && php --ri swoole \
     #  ---------- some config ----------
     && cd /etc/php7 \
     # - config PHP
