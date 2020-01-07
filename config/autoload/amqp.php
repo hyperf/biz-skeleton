@@ -35,7 +35,7 @@ return [
             'connection_timeout' => 3.0,
             'read_write_timeout' => 6.0,
             'context' => null,
-            'keepalive' => false,
+            'keepalive' => true,
             'heartbeat' => 3,
         ],
     ],
