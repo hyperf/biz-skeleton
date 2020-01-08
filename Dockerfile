@@ -37,7 +37,7 @@ RUN set -ex \
         echo "post_max_size=108M"; \
         echo "memory_limit=1024M"; \
         echo "date.timezone=${TIMEZONE}"; \
-    } | tee conf.d/99-overrides.ini \
+    } | tee conf.d/99_overrides.ini \
     # - config timezone
     && ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && echo "${TIMEZONE}" > /etc/timezone \
