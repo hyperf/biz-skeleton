@@ -11,5 +11,5 @@ declare(strict_types=1);
  */
 
 return [
-    // Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler::class,
+    Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler::class,
 ];
