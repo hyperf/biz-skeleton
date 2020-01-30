@@ -10,7 +10,7 @@
         "middleware"
     ],
     "description": "A coroutine framework that focuses on hyperspeed and flexible, specifically use for build microservices and middlewares.",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
@@ -18,8 +18,7 @@
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
-        "ext-swoole": ">=4.2",
-        "hyperf/amqp": "1.1.*",
+        "ext-swoole": ">=4.4",
         "hyperf/async-queue": "1.1.*",
         "hyperf/cache": "1.1.*",
         "hyperf/command": "1.1.*",
