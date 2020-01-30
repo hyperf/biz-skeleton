@@ -16,7 +16,7 @@ return [
         'port' => (int) env('AMQP_PORT', 5672),
         'user' => env('AMQP_USER', 'guest'),
         'password' => env('AMQP_PASSWORD', 'guest'),
-        'vhost' => '/',
+        'vhost' => env('AMQP_VHOST', '/'),
         'concurrent' => [
             'limit' => 2,
         ],
@@ -35,7 +35,7 @@ return [
             'connection_timeout' => 3.0,
             'read_write_timeout' => 6.0,
             'context' => null,
-            'keepalive' => true,
+            'keepalive' => false,
             'heartbeat' => 3,
         ],
     ],
