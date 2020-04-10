@@ -47,7 +47,7 @@
         "hyperf/testing": "1.1.*",
         "mockery/mockery": "^1.0",
         "phpstan/phpstan": "^0.11.2",
-        "swoft/swoole-ide-helper": "^4.2"
+        "swoole/ide-helper": "dev-master"
     },
     "autoload": {
         "psr-4": {
