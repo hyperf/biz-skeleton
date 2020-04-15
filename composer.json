@@ -19,32 +19,35 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=4.4",
-        "hyperf/async-queue": "1.1.*",
-        "hyperf/cache": "1.1.*",
-        "hyperf/command": "1.1.*",
-        "hyperf/config": "1.1.*",
-        "hyperf/constants": "1.1.*",
-        "hyperf/contract": "1.1.*",
-        "hyperf/database": "1.1.*",
-        "hyperf/db-connection": "1.1.*",
-        "hyperf/di": "1.1.*",
-        "hyperf/dispatcher": "1.1.*",
-        "hyperf/event": "1.1.*",
-        "hyperf/exception-handler": "1.1.*",
-        "hyperf/framework": "1.1.*",
-        "hyperf/guzzle": "1.1.*",
-        "hyperf/http-server": "1.1.*",
-        "hyperf/logger": "1.1.*",
-        "hyperf/model-cache": "1.1.*",
-        "hyperf/pool": "1.1.*",
-        "hyperf/process": "1.1.*",
-        "hyperf/redis": "1.1.*",
-        "hyperf/utils": "1.1.*"
+        "doctrine/annotations": "dev-master as 1.10.1",
+        "hyperf/async-queue": "dev-master",
+        "hyperf/autoload": "dev-master",
+        "hyperf/cache": "dev-master",
+        "hyperf/command": "dev-master",
+        "hyperf/config": "dev-master",
+        "hyperf/constants": "dev-master",
+        "hyperf/contract": "dev-master",
+        "hyperf/database": "dev-master",
+        "hyperf/db-connection": "dev-master",
+        "hyperf/di": "dev-master",
+        "hyperf/dispatcher": "dev-master",
+        "hyperf/event": "dev-master",
+        "hyperf/exception-handler": "dev-master",
+        "hyperf/framework": "dev-master",
+        "hyperf/guzzle": "dev-master",
+        "hyperf/http-server": "dev-master",
+        "hyperf/logger": "dev-master",
+        "hyperf/model-cache": "dev-master",
+        "hyperf/pool": "dev-master",
+        "hyperf/process": "dev-master",
+        "hyperf/redis": "dev-master",
+        "hyperf/utils": "dev-master",
+        "php-di/phpdoc-reader": "dev-master as 2.1.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
-        "hyperf/devtool": "1.1.*",
-        "hyperf/testing": "1.1.*",
+        "hyperf/devtool": "dev-master",
+        "hyperf/testing": "dev-master",
         "mockery/mockery": "^1.0",
         "phpstan/phpstan": "^0.11.2",
         "swoole/ide-helper": "dev-master"
@@ -82,6 +85,18 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "hyperf": {
+            "type": "path",
+            "url": "../hyperf-2.0/src/*"
+        },
+        "annotations": {
+            "type": "git",
+            "url": "https://github.com/hyperf/annotations.git"
+        },
+        "PhpDocReader": {
+            "type": "git",
+            "url": "https://github.com/hyperf/PhpDocReader.git"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
