@@ -93,10 +93,6 @@
             "type": "git",
             "url": "https://github.com/hyperf/annotations.git"
         },
-        "PhpDocReader": {
-            "type": "git",
-            "url": "https://github.com/hyperf/PhpDocReader.git"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
