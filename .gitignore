@@ -10,3 +10,5 @@ vendor/
 .env
 .DS_Store
 *.lock
+
+Demo*
