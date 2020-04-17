@@ -9,8 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-use Hyperf\Amqp\Message\ProducerMessageInterface;
-use Hyperf\Amqp\Producer;
 use Hyperf\AsyncQueue\Driver\DriverFactory;
 use Hyperf\AsyncQueue\JobInterface;
 use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
@@ -51,15 +49,5 @@ if (! function_exists('queue_push')) {
     {
         $driver = di()->get(DriverFactory::class)->get($key);
         return $driver->push($job, $delay);
-    }
-}
-
-if (! function_exists('amqp_produce')) {
-    /**
-     * Produce a amqp message.
-     */
-    function amqp_produce(ProducerMessageInterface $message): bool
-    {
-        return di()->get(Producer::class)->produce($message, true);
     }
 }
