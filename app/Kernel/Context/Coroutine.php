@@ -11,10 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Kernel\Context;
 
-use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
-use Hyperf\Utils\Context;
 use Psr\Container\ContainerInterface;
 use Swoole\Coroutine as SwooleCoroutine;
 
@@ -36,34 +34,17 @@ class Coroutine
     protected $formatter;
 
     /**
-     * @var ConfigInterface
+     * @var Context
      */
-    protected $config;
+    protected $context;
 
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
         $this->logger = $container->get(StdoutLoggerInterface::class);
-        $this->config = $container->get(ConfigInterface::class);
+        $this->context = $container->get(Context::class);
         if ($container->has(FormatterInterface::class)) {
             $this->formatter = $container->get(FormatterInterface::class);
-        }
-    }
-
-    public function getContext(): array
-    {
-        $data = [];
-        foreach ($this->config->get('context.copy', []) as $key) {
-            $data[$key] = Context::get($key);
-        }
-
-        return $data;
-    }
-
-    public function setContext(array $data): void
-    {
-        foreach ($data as $key => $value) {
-            Context::set($key, $value);
         }
     }
 
@@ -73,10 +54,10 @@ class Coroutine
      */
     public function create(callable $callable): int
     {
-        $data = $this->getContext();
+        $data = $this->context->getContext();
         $result = SwooleCoroutine::create(function () use ($callable, $data) {
             try {
-                $this->setContext($data);
+                $this->context->setContext($data);
                 call($callable);
             } catch (Throwable $throwable) {
                 if ($this->formatter) {
