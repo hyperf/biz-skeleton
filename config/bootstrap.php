@@ -11,7 +11,11 @@ declare(strict_types=1);
  */
 use App\Kernel\Context\Coroutine;
 
+/**
+ * @return bool|int
+ */
 function go(callable $callable)
 {
-    return di()->get(Coroutine::class)->create($callable);
+    $id = di()->get(Coroutine::class)->create($callable);
+    return $id > 0 ? $id : false;
 }
