@@ -13,5 +13,5 @@ use App\Kernel\Context\Coroutine;
 
 function go(callable $callable)
 {
-    di()->get(Coroutine::class)->create($callable);
+    return di()->get(Coroutine::class)->create($callable);
 }
