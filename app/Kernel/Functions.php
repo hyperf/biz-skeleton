@@ -17,7 +17,7 @@ use Hyperf\Utils\ApplicationContext;
 if (! function_exists('di')) {
     /**
      * Finds an entry of the container by its identifier and returns it.
-     * @param null|mixed $id
+     * @param null|string $id
      * @return mixed|\Psr\Container\ContainerInterface
      */
     function di($id = null)
