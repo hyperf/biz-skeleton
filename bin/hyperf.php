@@ -13,7 +13,7 @@ date_default_timezone_set('Asia/Shanghai');
 // require BASE_PATH . '/config/bootstrap.php';
 require BASE_PATH . '/vendor/autoload.php';
 
-Hyperf\Autoload\ClassLoader::init();
+Hyperf\Di\ClassLoader::init();
 
 // Self-called anonymous function that creates its own scope and keep the global namespace clean.
 (function () {

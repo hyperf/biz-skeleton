@@ -21,7 +21,6 @@
         "ext-swoole": ">=4.4",
         "doctrine/annotations": "dev-master as 1.10.1",
         "hyperf/async-queue": "dev-master",
-        "hyperf/autoload": "dev-master",
         "hyperf/cache": "dev-master",
         "hyperf/command": "dev-master",
         "hyperf/config": "dev-master",
