@@ -19,7 +19,6 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=4.4",
-        "doctrine/annotations": "dev-master as 1.10.1",
         "hyperf/async-queue": "dev-master",
         "hyperf/cache": "dev-master",
         "hyperf/command": "dev-master",
@@ -86,10 +85,6 @@
         "hyperf": {
             "type": "path",
             "url": "../hyperf-2.0/src/*"
-        },
-        "annotations": {
-            "type": "git",
-            "url": "https://github.com/hyperf/annotations.git"
         },
         "packagist": {
             "type": "composer",
