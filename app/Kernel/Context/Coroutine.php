@@ -11,7 +11,6 @@ declare(strict_types=1);
  */
 namespace App\Kernel\Context;
 
-use Hyperf\Contract\ConfigInterface;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
 use Hyperf\Utils;
@@ -35,16 +34,10 @@ class Coroutine
      */
     protected $formatter;
 
-    /**
-     * @var array
-     */
-    protected $keys = [];
-
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
         $this->logger = $container->get(StdoutLoggerInterface::class);
-        $this->keys = $container->get(ConfigInterface::class)->get('context.copy', []);
         if ($container->has(FormatterInterface::class)) {
             $this->formatter = $container->get(FormatterInterface::class);
         }
@@ -59,7 +52,7 @@ class Coroutine
         $id = Utils\Coroutine::id();
         $result = SwooleCoroutine::create(function () use ($callable, $id) {
             try {
-                $this->keys && Utils\Context::copy($id, $this->keys);
+                Utils\Context::copy($id);
                 call($callable);
             } catch (Throwable $throwable) {
                 if ($this->formatter) {
