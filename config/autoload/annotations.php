@@ -9,6 +9,8 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
+use Hyperf\Utils\Coroutine;
+
 return [
     'scan' => [
         'paths' => [
@@ -16,6 +18,12 @@ return [
         ],
         'ignore_annotations' => [
             'mixin',
+        ],
+        'cache_namespaces' => [
+            'Hyperf',
+        ],
+        'class_map' => [
+            // Coroutine::class => BASE_PATH . '/app/Kernel/ClassMap/Coroutine.php',
         ],
     ],
 ];
