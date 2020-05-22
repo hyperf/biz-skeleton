@@ -52,7 +52,7 @@ WORKDIR /opt/www
 # RUN composer install --no-dev --no-scripts
 
 COPY . /opt/www
-RUN composer install --no-dev -o
+RUN composer install --no-dev -o && php bin/hyperf.php
 
 EXPOSE 9501
 
