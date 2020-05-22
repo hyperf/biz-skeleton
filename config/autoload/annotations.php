@@ -19,9 +19,6 @@ return [
         'ignore_annotations' => [
             'mixin',
         ],
-        'cache_namespaces' => [
-            'Hyperf',
-        ],
         'class_map' => [
             // Coroutine::class => BASE_PATH . '/app/Kernel/ClassMap/Coroutine.php',
         ],
