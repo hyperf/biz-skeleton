@@ -9,6 +9,8 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
+use App\Kernel\Log;
+
 return [
     'default' => [
         'handler' => [
@@ -27,6 +29,9 @@ return [
             ],
         ],
         'processors' => [
+            [
+                'class' => Log\AppendRequestIdProcessor::class,
+            ],
         ],
     ],
 ];

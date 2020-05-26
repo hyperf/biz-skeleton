@@ -6,7 +6,7 @@
 # @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
 
 FROM hyperf/hyperf:7.2-alpine-v3.9-cli
-LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT"
+LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT" app.name="Hyperf"
 
 ##
 # ---------- env settings ----------
@@ -52,7 +52,7 @@ WORKDIR /opt/www
 # RUN composer install --no-dev --no-scripts
 
 COPY . /opt/www
-RUN composer install --no-dev -o
+RUN composer install --no-dev -o && php bin/hyperf.php
 
 EXPOSE 9501
 
