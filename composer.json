@@ -18,7 +18,7 @@
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
-        "ext-swoole": ">=4.4",
+        "ext-swoole": ">=4.5",
         "hyperf/async-queue": "2.0.*",
         "hyperf/cache": "2.0.*",
         "hyperf/command": "2.0.*",
