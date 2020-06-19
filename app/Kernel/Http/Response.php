@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace App\Kernel\Http;
 
 use Hyperf\HttpMessage\Cookie\Cookie;
+use Hyperf\HttpMessage\Exception\HttpException;
+use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Hyperf\Utils\Context;
 use Psr\Container\ContainerInterface;
@@ -35,7 +37,7 @@ class Response
         $this->response = $container->get(ResponseInterface::class);
     }
 
-    public function success($data = [])
+    public function success($data = []): PsrResponseInterface
     {
         return $this->response->json([
             'code' => 0,
@@ -43,7 +45,7 @@ class Response
         ]);
     }
 
-    public function fail($code, $message = '')
+    public function fail($code, $message = ''): PsrResponseInterface
     {
         return $this->response->json([
             'code' => $code,
@@ -51,7 +53,7 @@ class Response
         ]);
     }
 
-    public function redirect($url, $status = 302)
+    public function redirect($url, $status = 302): PsrResponseInterface
     {
         return $this->response()
             ->withAddedHeader('Location', (string) $url)
@@ -65,10 +67,15 @@ class Response
         return $this;
     }
 
-    /**
-     * @return \Hyperf\HttpMessage\Server\Response
-     */
-    public function response()
+    public function handleException(HttpException $throwable): PsrResponseInterface
+    {
+        return $this->response()
+            ->withAddedHeader('Server', 'Hyperf')
+            ->withStatus($throwable->getStatusCode())
+            ->withBody(new SwooleStream($throwable->getMessage()));
+    }
+
+    public function response(): PsrResponseInterface
     {
         return Context::get(PsrResponseInterface::class);
     }
