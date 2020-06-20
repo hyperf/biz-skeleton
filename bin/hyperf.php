@@ -12,10 +12,9 @@ date_default_timezone_set('Asia/Shanghai');
 
 require BASE_PATH . '/vendor/autoload.php';
 
-Hyperf\Di\ClassLoader::init();
-
 // Self-called anonymous function that creates its own scope and keep the global namespace clean.
 (function () {
+    Hyperf\Di\ClassLoader::init();
     /** @var \Psr\Container\ContainerInterface $container */
     $container = require BASE_PATH . '/config/container.php';
 
