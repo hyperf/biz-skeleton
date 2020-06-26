@@ -16,6 +16,7 @@ use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
 use Hyperf\Utils;
 use Psr\Container\ContainerInterface;
 use Swoole\Coroutine as SwooleCoroutine;
+use Throwable;
 
 class Coroutine
 {
