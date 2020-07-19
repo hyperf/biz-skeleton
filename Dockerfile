@@ -34,9 +34,9 @@ RUN set -ex \
     && cd /etc/php7 \
     # - config PHP
     && { \
-        echo "upload_max_filesize=100M"; \
-        echo "post_max_size=108M"; \
-        echo "memory_limit=1024M"; \
+        echo "upload_max_filesize=128M"; \
+        echo "post_max_size=128M"; \
+        echo "memory_limit=1G"; \
         echo "date.timezone=${TIMEZONE}"; \
     } | tee conf.d/99_overrides.ini \
     # - config timezone
