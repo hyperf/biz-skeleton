@@ -76,7 +76,7 @@
         "post-autoload-dump": [
             "rm -rf runtime/container"
         ],
-        "analyse": "phpstan analyse --memory-limit 300M -l 0 -c phpstan.neon ./app ./config",
+        "analyse": "phpstan analyse --memory-limit 512M -l 0 -c phpstan.neon ./app ./config",
         "cs-fix": "php-cs-fixer fix $1",
         "start": "php ./bin/hyperf.php start",
         "test": "co-phpunit -c phpunit.xml --colors=always"
