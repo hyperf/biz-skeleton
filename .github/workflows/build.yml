@@ -1,0 +1,11 @@
+name: biz-skeleton
+
+on: [push, pull_request]
+
+jobs:
+  build-alpine-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: build
+        run: docker build -t biz-skeleton .
