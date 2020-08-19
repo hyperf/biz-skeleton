@@ -20,7 +20,6 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
 
 # update
 RUN set -ex \
-    && apk update \
     # install composer
     && cd /tmp \
     && wget https://mirrors.aliyun.com/composer/composer.phar \
