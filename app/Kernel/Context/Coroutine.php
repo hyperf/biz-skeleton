@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Kernel\Context;
 
+use App\Kernel\Log\AppendRequestIdProcessor;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
 use Hyperf\Utils;
@@ -53,7 +54,10 @@ class Coroutine
         $id = Utils\Coroutine::id();
         $result = SwooleCoroutine::create(function () use ($callable, $id) {
             try {
-                Utils\Context::copy($id);
+                // Shouldn't copy all contexts to avoid socket already been bound to another coroutine.
+                Utils\Context::copy($id, [
+                    AppendRequestIdProcessor::REQUEST_ID,
+                ]);
                 call($callable);
             } catch (Throwable $throwable) {
                 if ($this->formatter) {

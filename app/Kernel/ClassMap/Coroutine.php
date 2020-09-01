@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 namespace Hyperf\Utils;
 
-use App\Kernel\Context\Coroutine as BCoroutine;
+use App\Kernel\Context\Coroutine as Co;
 use Swoole\Coroutine as SwooleCoroutine;
 
 /**
@@ -63,7 +63,7 @@ class Coroutine
      */
     public static function create(callable $callable): int
     {
-        return di()->get(BCoroutine::class)->create($callable);
+        return di()->get(Co::class)->create($callable);
     }
 
     public static function inCoroutine(): bool
