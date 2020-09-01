@@ -13,8 +13,10 @@ namespace HyperfTest\Cases;
 
 use App\Kernel\Context\Coroutine;
 use App\Kernel\Log\AppendRequestIdProcessor;
+use Hyperf\HttpMessage\Server\Request;
 use Hyperf\Utils\Context;
 use HyperfTest\HttpTestCase;
+use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Coroutine\Channel;
 
 /**
@@ -48,16 +50,19 @@ class ExampleTest extends HttpTestCase
 
         Context::set(AppendRequestIdProcessor::REQUEST_ID, $id = uniqid());
         $pool = new Channel(1);
-        di()->get(Coroutine::class)->create(function () use ($pool, $id) {
+        di()->get(Coroutine::class)->create(function () use ($pool) {
             try {
                 $all = Context::getContainer();
-                $this->assertSame([AppendRequestIdProcessor::REQUEST_ID => $id], (array) $all);
-                $pool->push(true);
+                $pool->push((array) $all);
             } catch (\Throwable $exception) {
                 $pool->push(false);
             }
         });
 
-        $this->assertTrue($pool->pop());
+        $data = $pool->pop();
+        $this->assertIsArray($data);
+        $this->assertTrue(count($data) === 2);
+        $this->assertSame($id, $data[AppendRequestIdProcessor::REQUEST_ID]);
+        $this->assertInstanceOf(Request::class, $data[ServerRequestInterface::class]);
     }
 }

@@ -16,6 +16,7 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
 use Hyperf\Utils;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Coroutine as SwooleCoroutine;
 use Throwable;
 
@@ -57,6 +58,7 @@ class Coroutine
                 // Shouldn't copy all contexts to avoid socket already been bound to another coroutine.
                 Utils\Context::copy($id, [
                     AppendRequestIdProcessor::REQUEST_ID,
+                    ServerRequestInterface::class,
                 ]);
                 call($callable);
             } catch (Throwable $throwable) {
