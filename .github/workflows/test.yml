@@ -8,7 +8,7 @@ env:
 jobs:
   ci:
     name: Test on PHP ${{ matrix.php-version }}
-    runs-on: "${{ matrix.os }}"
+    runs-on: '${{ matrix.os }}'
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -22,7 +22,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           tools: phpize
-          ini-values: extension=swoole, opcache.enable_cli=1
+          ini-values: extension=swoole, opcache.enable_cli=1, swoole.use_shortname='Off'
           coverage: none
       - name: Setup Swoole
         run: |
