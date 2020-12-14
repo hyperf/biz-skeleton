@@ -19,12 +19,10 @@ class AppendRequestIdProcessor implements ProcessorInterface
 {
     const REQUEST_ID = 'log.request.id';
 
-    const COROUTINE_ID = 'log.coroutine.id';
-
     public function __invoke(array $records)
     {
         $records['context']['request_id'] = Context::getOrSet(self::REQUEST_ID, uniqid());
-        $records['context']['coroutine_id'] = Context::getOrSet(self::COROUTINE_ID, Coroutine::id());
+        $records['context']['coroutine_id'] = Coroutine::id();
         return $records;
     }
 }
