@@ -2,18 +2,18 @@ name: PHPUnit for Hyperf
 
 on: [push, pull_request]
 
-env:
-  SW_VERSION: '4.5.9'
-
 jobs:
   ci:
-    name: Test on PHP ${{ matrix.php-version }}
+    name: Test on PHP ${{ matrix.php-version }} Swoole ${{ matrix.swoole-version }}
     runs-on: '${{ matrix.os }}'
     strategy:
       matrix:
         os: [ubuntu-latest]
         php-version: ['7.3', '7.4']
+        swoole-version: ['4.5.10', '4.6.0-beta']
       max-parallel: 3
+    env:
+      SW_VERSION: ${{ matrix.swoole-version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
