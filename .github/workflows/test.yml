@@ -10,8 +10,8 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php-version: ['7.3', '7.4']
-        swoole-version: ['4.5.10', '4.6.0']
-      max-parallel: 3
+        swoole-version: ['4.5.11', '4.6.3']
+      max-parallel: 4
     env:
       SW_VERSION: ${{ matrix.swoole-version }}
     steps:
@@ -22,19 +22,29 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           tools: phpize
-          ini-values: extension=swoole, opcache.enable_cli=1, swoole.use_shortname='Off'
+          ini-values: opcache.enable_cli=1
           coverage: none
+          extensions: pdo, pdo_mysql
       - name: Setup Swoole
         run: |
+          sudo apt-get install libcurl4-openssl-dev
           wget https://github.com/swoole/swoole-src/archive/v${SW_VERSION}.tar.gz -O swoole.tar.gz
           mkdir -p swoole
           tar -xf swoole.tar.gz -C swoole --strip-components=1
           rm swoole.tar.gz
           cd swoole
           phpize
-          ./configure --enable-openssl --enable-mysqlnd --enable-http2
+          ./configure --enable-openssl --enable-http2 --enable-swoole-curl --enable-swoole-json
           make -j$(nproc)
           sudo make install
+          sudo sh -c "echo extension=swoole > /etc/php/${{ matrix.php-version }}/cli/conf.d/swoole.ini"
+          sudo sh -c "echo swoole.use_shortname='Off' >> /etc/php/${{ matrix.php-version }}/cli/conf.d/swoole.ini"
+          php --ri swoole
+      - name: Show Environment
+        run: |
+          php -v
+          php -m
+          php -i
       - name: Setup Packages
         run: composer update -o
       - name: Run Test Cases
