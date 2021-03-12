@@ -61,8 +61,6 @@ class ExampleTest extends HttpTestCase
 
         $data = $pool->pop();
         $this->assertIsArray($data);
-        $this->assertTrue(count($data) === 2);
         $this->assertSame($id, $data[AppendRequestIdProcessor::REQUEST_ID]);
-        $this->assertInstanceOf(Request::class, $data[ServerRequestInterface::class]);
     }
 }
