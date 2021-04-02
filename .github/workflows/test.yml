@@ -27,6 +27,7 @@ jobs:
           extensions: pdo, pdo_mysql, redis
       - name: Setup Swoole
         run: |
+          sudo apt-get update
           sudo apt-get install libcurl4-openssl-dev
           wget https://github.com/swoole/swoole-src/archive/v${SW_VERSION}.tar.gz -O swoole.tar.gz
           mkdir -p swoole
