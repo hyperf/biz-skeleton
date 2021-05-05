@@ -14,10 +14,8 @@ namespace HyperfTest\Cases;
 use App\Kernel\Context\Coroutine;
 use App\Kernel\Log\AppendRequestIdProcessor;
 use Hyperf\Engine\Channel;
-use Hyperf\HttpMessage\Server\Request;
 use Hyperf\Utils\Context;
 use HyperfTest\HttpTestCase;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @internal
