@@ -17,7 +17,7 @@ use Monolog\Processor\ProcessorInterface;
 
 class AppendRequestIdProcessor implements ProcessorInterface
 {
-    const REQUEST_ID = 'log.request.id';
+    public const REQUEST_ID = 'log.request.id';
 
     public function __invoke(array $records)
     {
