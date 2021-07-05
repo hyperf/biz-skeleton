@@ -17,6 +17,7 @@ use App\Kernel\Http\Response;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Exception\CircularDependencyException;
 use Hyperf\ExceptionHandler\ExceptionHandler;
+use Hyperf\HttpMessage\Exception\HttpException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
@@ -48,6 +49,8 @@ class BusinessExceptionHandler extends ExceptionHandler
     public function handle(Throwable $throwable, ResponseInterface $response)
     {
         switch (true) {
+            case $throwable instanceof HttpException:
+                return $this->response->handleException($throwable);
             case $throwable instanceof BusinessException:
                 $this->logger->warning(format_throwable($throwable));
                 return $this->response->fail($throwable->getCode(), $throwable->getMessage());
