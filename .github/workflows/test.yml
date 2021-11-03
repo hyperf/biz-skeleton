@@ -22,7 +22,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           tools: phpize
-          ini-values: opcache.enable_cli=1
+          ini-values: opcache.enable_cli=0
           coverage: none
           extensions: pdo, pdo_mysql, redis
       - name: Setup Swoole
