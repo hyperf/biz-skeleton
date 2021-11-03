@@ -30,7 +30,7 @@ class Response
         $this->response = $container->get(ResponseInterface::class);
     }
 
-    public function success(array $data = []): PsrResponseInterface
+    public function success(mixed $data = []): PsrResponseInterface
     {
         return $this->response->json([
             'code' => 0,
