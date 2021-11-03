@@ -22,9 +22,7 @@ use Hyperf\Event\Contract\ListenerInterface;
 use Hyperf\Logger\LoggerFactory;
 use Psr\Container\ContainerInterface;
 
-/**
- * @Listener
- */
+#[Listener]
 class QueueHandleListener implements ListenerInterface
 {
     protected $logger;

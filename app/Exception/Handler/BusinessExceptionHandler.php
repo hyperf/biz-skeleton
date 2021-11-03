@@ -20,28 +20,17 @@ use Hyperf\ExceptionHandler\ExceptionHandler;
 use Hyperf\HttpMessage\Exception\HttpException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 use Throwable;
 
 class BusinessExceptionHandler extends ExceptionHandler
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
+    protected Response $response;
 
-    /**
-     * @var Response
-     */
-    protected $response;
+    protected LoggerInterface $logger;
 
-    /**
-     * @var StdoutLoggerInterface
-     */
-    protected $logger;
-
-    public function __construct(ContainerInterface $container)
+    public function __construct(protected ContainerInterface $container)
     {
-        $this->container = $container;
         $this->response = $container->get(Response::class);
         $this->logger = $container->get(StdoutLoggerInterface::class);
     }

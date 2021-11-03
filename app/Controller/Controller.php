@@ -17,24 +17,12 @@ use Psr\Container\ContainerInterface;
 
 abstract class Controller
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
+    protected Response $response;
 
-    /**
-     * @var Response
-     */
-    protected $response;
+    protected RequestInterface $request;
 
-    /**
-     * @var RequestInterface
-     */
-    protected $request;
-
-    public function __construct(ContainerInterface $container)
+    public function __construct(protected ContainerInterface $container)
     {
-        $this->container = $container;
         $this->response = $container->get(Response::class);
         $this->request = $container->get(RequestInterface::class);
     }

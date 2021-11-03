@@ -21,23 +21,16 @@ use Psr\Http\Message\ResponseInterface as PsrResponseInterface;
 
 class Response
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
+    public const OK = 0;
 
-    /**
-     * @var ResponseInterface
-     */
-    protected $response;
+    protected ResponseInterface $response;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(protected ContainerInterface $container)
     {
-        $this->container = $container;
         $this->response = $container->get(ResponseInterface::class);
     }
 
-    public function success($data = []): PsrResponseInterface
+    public function success(array $data = []): PsrResponseInterface
     {
         return $this->response->json([
             'code' => 0,
@@ -45,7 +38,7 @@ class Response
         ]);
     }
 
-    public function fail($code, $message = ''): PsrResponseInterface
+    public function fail(int $code, string $message = ''): PsrResponseInterface
     {
         return $this->response->json([
             'code' => $code,
@@ -53,7 +46,7 @@ class Response
         ]);
     }
 
-    public function redirect($url, $status = 302): PsrResponseInterface
+    public function redirect($url, int $status = 302): PsrResponseInterface
     {
         return $this->response()
             ->withAddedHeader('Location', (string) $url)
