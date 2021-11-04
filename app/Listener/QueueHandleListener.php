@@ -21,11 +21,12 @@ use Hyperf\Event\Annotation\Listener;
 use Hyperf\Event\Contract\ListenerInterface;
 use Hyperf\Logger\LoggerFactory;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 
 #[Listener]
 class QueueHandleListener implements ListenerInterface
 {
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(ContainerInterface $container)
     {
@@ -44,8 +45,8 @@ class QueueHandleListener implements ListenerInterface
 
     public function process(object $event)
     {
-        if ($event instanceof Event && $event->message->job()) {
-            $job = $event->message->job();
+        if ($event instanceof Event && $event->getMessage()->job()) {
+            $job = $event->getMessage()->job();
             $jobClass = get_class($job);
             if ($job instanceof AnnotationJob) {
                 $jobClass = sprintf('Job[%s@%s]', $job->class, $job->method);
@@ -61,7 +62,7 @@ class QueueHandleListener implements ListenerInterface
                     break;
                 case $event instanceof FailedHandle:
                     $this->logger->error(sprintf('[%s] Failed %s.', $date, $jobClass));
-                    $this->logger->error(format_throwable($event->getThrowable()));
+                    $this->logger->error((string) $event->getThrowable());
                     break;
                 case $event instanceof RetryHandle:
                     $this->logger->warning(sprintf('[%s] Retried %s.', $date, $jobClass));
