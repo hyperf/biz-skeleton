@@ -85,11 +85,5 @@
         "start": "php ./bin/hyperf.php start",
         "test": "co-phpunit --prepend test/bootstrap.php -c phpunit.xml --colors=always",
         "rector": "rector process --clear-cache"
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://mirrors.aliyun.com/composer"
-        }
     }
 }

@@ -10,15 +10,21 @@ variables:
   REGISTRY_URL: registry-docker.org
 
 unit:
-  image: tmaier/docker-compose:latest
-  services:
-    - docker:latest
   stage: unit
+  image: tmaier/docker-compose:latest
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - docker:dind
   before_script:
 #    - git submodule sync --recursive
 #    - git submodule update --init --recursive
+    - docker -v
+    - docker-compose -v
   script:
-    - pwd
+    - APP_ENV=test docker-compose up -d --remove-orphans --build
+    - docker exec biz-skeleton_hyperf_1 composer install
+    - docker exec biz-skeleton_hyperf_1 composer test
   tags:
     - unit
 
