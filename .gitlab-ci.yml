@@ -1,12 +1,26 @@
 # usermod -aG docker gitlab-runner
 
 stages:
+  - unit
   - build
   - deploy
 
 variables:
   PROJECT_NAME: hyperf
   REGISTRY_URL: registry-docker.org
+
+unit:
+  image: tmaier/docker-compose:latest
+  services:
+    - docker:latest
+  stage: unit
+  before_script:
+#    - git submodule sync --recursive
+#    - git submodule update --init --recursive
+  script:
+    - pwd
+  tags:
+    - unit
 
 build_test_docker:
   stage: build

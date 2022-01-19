@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  mysql:
+    image: "mysql:5.7"
+    command: --init-file /data/application/init.sql
+    environment:
+      - "TZ=Asia/Shanghai"
+      - "MYSQL_ALLOW_EMPTY_PASSWORD=true"
+    networks:
+      - net
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./github/init.sql:/data/application/init.sql
+    restart: "always"
+  redis:
+    image: "redis"
+    networks:
+      - net
+    volumes:
+      - redis-data:/data
+    restart: "always"
+  hyperf:
+    image: "hyperf/biz-skeleton:latest"
+    build:
+      context: "."
+    environment:
+      APP_ENV: "${APP_ENV:-prod}"
+      DB_HOST: "mysql"
+      REDIS_HOST: "redis"
+    networks:
+      - net
+    restart: "always"
+    deploy:
+      replicas: 1
+networks:
+  net:
+volumes:
+  mysql-data:
+  redis-data:
