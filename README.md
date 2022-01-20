@@ -30,8 +30,10 @@ sudo gitlab-runner register \
 --url https://gitlab.com/ \
 --registration-token REGISTRATION_TOKEN \
 --executor docker \
---description "My Docker Runner" \
---docker-image "docker:latest" \
---docker-volumes /var/run/docker.sock:/var/run/docker.sock
+--description "Unit Runner" \
+--docker-image "hyperf/docker-ci:latest" \
+--docker-volumes /var/run/docker.sock:/var/run/docker.sock \
+--docker-privileged \
+--tag-list "unit"
 ```
 

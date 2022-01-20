@@ -12,12 +12,11 @@ variables:
 unit:
   stage: unit
   image: hyperf/docker-ci:latest
+  resource_group: unit
   variables:
     DOCKER_TLS_CERTDIR: ""
     DOCKER_DRIVER: overlay2
     GIT_SUBMODULE_STRATEGY: recursive
-  services:
-    - docker:dind
   before_script:
 #    - git submodule sync --recursive
 #    - git submodule update --init --recursive
