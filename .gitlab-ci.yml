@@ -8,6 +8,7 @@ stages:
 variables:
   PROJECT_NAME: hyperf
   REGISTRY_URL: registry-docker.org
+  GIT_SUBMODULE_STRATEGY: recursive
 
 unit:
   stage: unit
@@ -16,10 +17,7 @@ unit:
   variables:
     DOCKER_TLS_CERTDIR: ""
     DOCKER_DRIVER: overlay2
-    GIT_SUBMODULE_STRATEGY: recursive
   before_script:
-#    - git submodule sync --recursive
-#    - git submodule update --init --recursive
     - cp .env.example .env
   script:
     - APP_ENV=test docker-compose up -d --remove-orphans --build
@@ -32,9 +30,6 @@ unit:
 
 build_test_docker:
   stage: build
-  before_script:
-#    - git submodule sync --recursive
-#    - git submodule update --init --recursive
   script:
     - docker build . -t $PROJECT_NAME
     - docker tag $PROJECT_NAME $REGISTRY_URL/$PROJECT_NAME:test
@@ -55,9 +50,6 @@ deploy_test_docker:
 
 build_docker:
   stage: build
-  before_script:
-#    - git submodule sync --recursive
-#    - git submodule update --init --recursive
   script:
     - docker build . -t $PROJECT_NAME
     - docker tag $PROJECT_NAME $REGISTRY_URL/$PROJECT_NAME:$CI_COMMIT_REF_NAME
