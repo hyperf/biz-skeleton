@@ -26,7 +26,7 @@ Hyperf 是基于 `Swoole 4.5+` 实现的高性能、高灵活性的 PHP 持久�
 如果需要使用 `Gitlab CI`，可以通过以下方式创建 `Gitlab Runner`。
 
 ```shell
-sudo gitlab-runner register \
+sudo gitlab-runner register -n \
 --url https://gitlab.com/ \
 --registration-token REGISTRATION_TOKEN \
 --executor docker \
@@ -34,6 +34,7 @@ sudo gitlab-runner register \
 --docker-image "hyperf/docker-ci:latest" \
 --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
 --docker-privileged \
---tag-list "unit"
+--tag-list "unit" \
+--docker-pull-policy "if-not-present"
 ```
 

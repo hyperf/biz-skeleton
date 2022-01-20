@@ -10,7 +10,7 @@ services:
       - net
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./github/init.sql:/data/application/init.sql
+      - ./.github/init.sql:/data/application/init.sql
     restart: "always"
   redis:
     image: "redis"
