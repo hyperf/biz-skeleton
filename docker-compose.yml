@@ -1,16 +1,17 @@
 version: '3.7'
 services:
   mysql:
-    image: "mysql:5.7"
-    command: --init-file /data/application/init.sql
+    image: "mysql/mysql-server:5.7"
     environment:
-      - "TZ=Asia/Shanghai"
-      - "MYSQL_ALLOW_EMPTY_PASSWORD=true"
+      TZ: "Asia/Shanghai"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: "hyperf"
     networks:
       - net
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./.github/init.sql:/data/application/init.sql
+      - ./.github/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: "always"
   redis:
     image: "redis"

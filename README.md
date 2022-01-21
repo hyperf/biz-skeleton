@@ -33,6 +33,7 @@ sudo gitlab-runner register -n \
 --description "Unit Runner" \
 --docker-image "hyperf/docker-ci:latest" \
 --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
+--docker-volumes /builds:/builds:rw \
 --docker-privileged \
 --tag-list "unit" \
 --docker-pull-policy "if-not-present"
