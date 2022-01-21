@@ -20,9 +20,10 @@ unit:
   before_script:
     - cp .env.example .env
   script:
-    - APP_ENV=test docker-compose up -d --remove-orphans --build
-    - docker exec biz-skeleton_hyperf_1 composer install
-    - docker exec biz-skeleton_hyperf_1 composer test
+    - vendor/bin/php-cs-fixer fix --dry-run
+#    - APP_ENV=test docker-compose up -d --remove-orphans --build
+#    - docker exec biz-skeleton_hyperf_1 composer install
+#    - docker exec biz-skeleton_hyperf_1 composer test
   after_script:
     - docker-compose down
   tags:

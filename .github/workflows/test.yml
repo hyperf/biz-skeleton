@@ -37,5 +37,6 @@ jobs:
         run: composer update -o
       - name: Run Test Cases
         run: |
+          vendor/bin/php-cs-fixer fix --dry-run
           composer analyse
           composer test
