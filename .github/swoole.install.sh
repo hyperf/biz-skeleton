@@ -13,3 +13,5 @@ sudo make install
 sudo sh -c "echo extension=swoole > /etc/php/${PHP_VERSION}/cli/conf.d/swoole.ini"
 sudo sh -c "echo swoole.use_shortname='Off' >> /etc/php/${PHP_VERSION}/cli/conf.d/swoole.ini"
 php --ri swoole
+cd ..
+rm -rf swoole
