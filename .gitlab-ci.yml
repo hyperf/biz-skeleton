@@ -22,6 +22,7 @@ unit:
   script:
     - APP_ENV=test docker-compose up -d --remove-orphans --build
     - docker exec $(basename $(pwd))_hyperf_1 composer install
+    - docker exec $(basename $(pwd))_hyperf_1 composer analyse
     - docker exec $(basename $(pwd))_hyperf_1 vendor/bin/php-cs-fixer fix --dry-run
     - docker exec $(basename $(pwd))_hyperf_1 composer test
   after_script:
