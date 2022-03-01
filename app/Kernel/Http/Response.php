@@ -11,11 +11,11 @@ declare(strict_types=1);
  */
 namespace App\Kernel\Http;
 
+use Hyperf\Context\Context;
 use Hyperf\HttpMessage\Cookie\Cookie;
 use Hyperf\HttpMessage\Exception\HttpException;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface;
-use Hyperf\Utils\Context;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as PsrResponseInterface;
 
