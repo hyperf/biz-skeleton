@@ -24,6 +24,9 @@ services:
     image: "hyperf/biz-skeleton:latest"
     build:
       context: "."
+    depends_on:
+      - mysql
+      - redis
     environment:
       APP_ENV: "${APP_ENV:-prod}"
       DB_HOST: "mysql"
