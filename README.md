@@ -28,6 +28,7 @@ Hyperf 是基于 `Swoole 4.5+` 实现的高性能、高灵活性的 PHP 持久�
 ```shell
 sudo gitlab-runner register -n \
 --url https://gitlab.com/ \
+--clone-url http://your-ip/ \
 --registration-token REGISTRATION_TOKEN \
 --executor docker \
 --description "Unit Runner" \
