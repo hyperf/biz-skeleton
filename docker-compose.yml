@@ -15,6 +15,9 @@ services:
     restart: "always"
   redis:
     image: "redis"
+    command:
+      - "redis-server"
+      - "--databases 256"
     networks:
       - net
     volumes:
