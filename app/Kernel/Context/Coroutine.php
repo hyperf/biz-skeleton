@@ -44,7 +44,7 @@ class Coroutine
                     AppendRequestIdProcessor::REQUEST_ID,
                     ServerRequestInterface::class,
                 ]);
-                call($callable);
+                $callable();
             } catch (Throwable $throwable) {
                 $this->logger->warning((string) $throwable);
             }
