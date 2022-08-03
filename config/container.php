@@ -13,6 +13,6 @@ use Hyperf\Di\Container;
 use Hyperf\Di\Definition\DefinitionSourceFactory;
 use Hyperf\Utils\ApplicationContext;
 
-$container = new Container((new DefinitionSourceFactory(true))());
+$container = new Container((new DefinitionSourceFactory())());
 
 return ApplicationContext::setContainer($container);
