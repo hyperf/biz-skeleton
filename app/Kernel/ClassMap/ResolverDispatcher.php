@@ -43,8 +43,7 @@ class ResolverDispatcher implements ResolverInterface
             return $definition->resolve($this->container);
         }
 
-        $resolver = $this->getDefinitionResolver($definition);
-        return $resolver->resolve($definition, $parameters);
+        return $this->getDefinitionResolver($definition)->resolve($definition, $parameters);
     }
 
     /**
@@ -59,8 +58,7 @@ class ResolverDispatcher implements ResolverInterface
             return $definition->isResolvable($this->container);
         }
 
-        $resolver = $this->getDefinitionResolver($definition);
-        return $resolver->isResolvable($definition, $parameters);
+        return $this->getDefinitionResolver($definition)->isResolvable($definition, $parameters);
     }
 
     /**
@@ -70,19 +68,10 @@ class ResolverDispatcher implements ResolverInterface
      */
     private function getDefinitionResolver(DefinitionInterface $definition): ResolverInterface
     {
-        switch (true) {
-            case $definition instanceof ObjectDefinition:
-                if (! $this->objectResolver) {
-                    $this->objectResolver = new ObjectResolver($this->container, $this);
-                }
-                return $this->objectResolver;
-            case $definition instanceof FactoryDefinition:
-                if (! $this->factoryResolver) {
-                    $this->factoryResolver = new FactoryResolver($this->container, $this);
-                }
-                return $this->factoryResolver;
-            default:
-                throw new RuntimeException('No definition resolver was configured for definition of type ' . get_class($definition));
-        }
+        return match (true) {
+            $definition instanceof ObjectDefinition => $this->objectResolver ??= new ObjectResolver($this->container, $this),
+            $definition instanceof FactoryDefinition => $this->factoryResolver ??= new FactoryResolver($this->container, $this),
+            default => throw new RuntimeException('No definition resolver was configured for definition of type ' . get_class($definition)),
+        };
     }
 }

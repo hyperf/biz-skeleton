@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace HyperfTest;
 
 use Hyperf\Testing;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -38,5 +39,10 @@ abstract class HttpTestCase extends TestCase
     public function __call($name, $arguments)
     {
         return $this->client->{$name}(...$arguments);
+    }
+
+    protected function tearDown(): void
+    {
+        Mockery::close();
     }
 }
