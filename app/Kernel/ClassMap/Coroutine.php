@@ -28,7 +28,7 @@ class Coroutine
         return Co::id();
     }
 
-    public static function defer(callable $callable)
+    public static function defer(callable $callable): void
     {
         Co::defer(static function () use ($callable) {
             try {
@@ -39,7 +39,7 @@ class Coroutine
         });
     }
 
-    public static function sleep(float $seconds)
+    public static function sleep(float $seconds): void
     {
         usleep(intval($seconds * 1000 * 1000));
     }
