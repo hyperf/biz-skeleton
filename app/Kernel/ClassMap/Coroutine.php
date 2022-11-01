@@ -16,6 +16,7 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Engine\Coroutine as Co;
 use Hyperf\Engine\Exception\CoroutineDestroyedException;
 use Hyperf\Engine\Exception\RunningInNonCoroutineException;
+use Throwable;
 
 class Coroutine
 {
@@ -33,7 +34,7 @@ class Coroutine
         Co::defer(static function () use ($callable) {
             try {
                 $callable();
-            } catch (\Throwable $exception) {
+            } catch (Throwable $exception) {
                 di()->get(StdoutLoggerInterface::class)->error((string) $exception);
             }
         });

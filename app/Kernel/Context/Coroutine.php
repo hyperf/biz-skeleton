@@ -52,7 +52,7 @@ class Coroutine
 
         try {
             return $coroutine->getId();
-        } catch (\Throwable $throwable) {
+        } catch (Throwable $throwable) {
             $this->logger->warning((string) $throwable);
             return -1;
         }

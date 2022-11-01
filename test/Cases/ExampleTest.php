@@ -22,6 +22,7 @@ use Hyperf\Utils\Reflection\ClassInvoker;
 use HyperfTest\HttpTestCase;
 use Mockery;
 use Psr\Container\ContainerInterface;
+use Throwable;
 
 /**
  * @internal
@@ -58,7 +59,7 @@ class ExampleTest extends HttpTestCase
             try {
                 $all = Context::getContainer();
                 $pool->push((array) $all);
-            } catch (\Throwable $exception) {
+            } catch (Throwable $exception) {
                 $pool->push(false);
             }
         });
