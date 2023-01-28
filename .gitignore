@@ -1,8 +1,11 @@
 .buildpath
 .settings/
 .project
+.bashrc
 *.patch
 .idea/
+.vscode/
+.fleet/
 .git/
 runtime/
 vendor/
