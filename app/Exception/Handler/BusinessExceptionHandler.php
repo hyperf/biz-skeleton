@@ -45,12 +45,12 @@ class BusinessExceptionHandler extends ExceptionHandler
                 return $this->response->fail($throwable->getCode(), $throwable->getMessage());
             case $throwable instanceof CircularDependencyException:
                 $this->logger->error($throwable->getMessage());
-                return $this->response->fail(ErrorCode::SERVER_ERROR, $throwable->getMessage());
+                return $this->response->fail(ErrorCode::SERVER_ERROR->value, $throwable->getMessage());
         }
 
         $this->logger->error(format_throwable($throwable));
 
-        return $this->response->fail(ErrorCode::SERVER_ERROR, 'Server Error');
+        return $this->response->fail(ErrorCode::SERVER_ERROR->value, 'Server Error');
     }
 
     public function isValid(Throwable $throwable): bool
