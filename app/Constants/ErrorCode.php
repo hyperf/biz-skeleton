@@ -19,7 +19,7 @@ enum ErrorCode: int
 {
     use EnumConstantsTrait;
 
-    /*
+    /**
      * @Message("Server Error")
      */
     case SERVER_ERROR = 500;
