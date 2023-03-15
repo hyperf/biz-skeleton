@@ -69,4 +69,14 @@ class Coroutine
     {
         return Co::id() > 0;
     }
+
+    public static function stats(): array
+    {
+        return Co::stats();
+    }
+
+    public static function exists(int $id): bool
+    {
+        return Co::exists($id);
+    }
 }
