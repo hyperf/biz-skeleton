@@ -26,6 +26,6 @@ enum ErrorCode: int implements ErrorCodeInterface
 
     public function getMessage(array $translate = null): string
     {
-        return $this->__call('message', [$this, $translate]);
+        return $this->__call('getMessage', [$translate]);
     }
 }
