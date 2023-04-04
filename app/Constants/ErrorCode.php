@@ -15,7 +15,7 @@ use Hyperf\Constants\Annotation\Constants;
 use Hyperf\Constants\EnumConstantsTrait;
 
 #[Constants]
-enum ErrorCode: int
+enum ErrorCode: int implements ErrorCodeInterface
 {
     use EnumConstantsTrait;
 
@@ -23,4 +23,9 @@ enum ErrorCode: int
      * @Message("Server Error")
      */
     case SERVER_ERROR = 500;
+
+    public function getMessage(array $translate = null): string
+    {
+        return $this->__call('message', [$this, $translate]);
+    }
 }
