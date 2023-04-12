@@ -15,7 +15,6 @@ use App\Kernel\Log\AppendRequestIdProcessor;
 use Hyperf\Context\Context;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Engine\Coroutine as Co;
-use Hyperf\Utils;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
@@ -36,7 +35,7 @@ class Coroutine
      */
     public function create(callable $callable): int
     {
-        $id = Utils\Coroutine::id();
+        $id = Co::id();
         $coroutine = Co::create(function () use ($callable, $id) {
             try {
                 // Shouldn't copy all contexts to avoid socket already been bound to another coroutine.
