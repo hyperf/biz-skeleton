@@ -15,6 +15,8 @@ use Hyperf\Testing;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
+use function Hyperf\Support\make;
+
 /**
  * Class HttpTestCase.
  * @method get($uri, $data = [], $headers = [])

@@ -18,7 +18,7 @@ use Hyperf\Di\Definition\FactoryDefinition;
 use Hyperf\Di\Resolver\FactoryResolver;
 use Hyperf\Di\Resolver\ResolverDispatcher;
 use Hyperf\Engine\Channel;
-use Hyperf\Utils\Reflection\ClassInvoker;
+use Hyperf\Support\Reflection\ClassInvoker;
 use HyperfTest\HttpTestCase;
 use Mockery;
 use Psr\Container\ContainerInterface;
