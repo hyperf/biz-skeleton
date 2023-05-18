@@ -13,7 +13,7 @@ use function Hyperf\Support\env;
 
 return [
     'default' => [
-        'driver' => env('DB_DRIVER', 'mysql'),
+        'driver' => env('DB_DRIVER', 'pdo'),
         'host' => env('DB_HOST', 'localhost'),
         'port' => env('DB_PORT', 3306),
         'database' => env('DB_DATABASE', 'hyperf'),
