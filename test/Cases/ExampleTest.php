@@ -19,7 +19,7 @@ use Hyperf\Di\Resolver\FactoryResolver;
 use Hyperf\Di\Resolver\ResolverDispatcher;
 use Hyperf\Engine\Channel;
 use Hyperf\Support\Reflection\ClassInvoker;
-use HyperfTest\HttpTestCase;
+use Hyperf\Testing\TestCase;
 use Mockery;
 use Psr\Container\ContainerInterface;
 use Throwable;
@@ -28,30 +28,44 @@ use Throwable;
  * @internal
  * @coversNothing
  */
-class ExampleTest extends HttpTestCase
+class ExampleTest extends TestCase
 {
     public function testExample()
     {
         $this->assertTrue(true);
 
-        $res = $this->get('/');
+        $this->get('/')
+            ->assertOk()
+            ->assertJson([
+                'code' => 0,
+                'data' => [
+                    'message' => 'Hello Hyperf.',
+                    'method' => 'GET',
+                    'user' => 'Hyperf',
+                ],
+            ]);
 
-        $this->assertSame(0, $res['code']);
-        $this->assertSame('Hello Hyperf.', $res['data']['message']);
-        $this->assertSame('GET', $res['data']['method']);
-        $this->assertSame('Hyperf', $res['data']['user']);
+        $this->get('/', ['user' => 'limx'])
+            ->assertOk()
+            ->assertJson([
+                'code' => 0,
+                'data' => [
+                    'message' => 'Hello Hyperf.',
+                    'method' => 'GET',
+                    'user' => 'limx',
+                ],
+            ]);
 
-        $res = $this->get('/', ['user' => 'limx']);
-
-        $this->assertSame(0, $res['code']);
-        $this->assertSame('limx', $res['data']['user']);
-
-        $res = $this->post('/', [
-            'user' => 'limx',
-        ]);
-        $this->assertSame('Hello Hyperf.', $res['data']['message']);
-        $this->assertSame('POST', $res['data']['method']);
-        $this->assertSame('limx', $res['data']['user']);
+        $res = $this->post('/', ['user' => 'limx'])
+            ->assertOk()
+            ->assertJson([
+                'code' => 0,
+                'data' => [
+                    'message' => 'Hello Hyperf.',
+                    'method' => 'POST',
+                    'user' => 'limx',
+                ],
+            ]);
 
         Context::set(AppendRequestIdProcessor::REQUEST_ID, $id = uniqid());
         $pool = new Channel(1);
