@@ -39,6 +39,7 @@
         "hyperf/http-server": "3.1.*",
         "hyperf/logger": "3.1.*",
         "hyperf/model-cache": "3.1.*",
+        "hyperf/polyfill-coroutine": "3.1.*",
         "hyperf/pool": "3.1.*",
         "hyperf/process": "3.1.*",
         "hyperf/redis": "3.1.*",
