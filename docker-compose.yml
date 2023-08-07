@@ -34,6 +34,10 @@ services:
       APP_ENV: "${APP_ENV:-prod}"
       DB_HOST: "mysql"
       REDIS_HOST: "redis"
+    ports:
+      - "9501:9501"
+    volumes:
+      - "./.env.example:/opt/www/.env"
     networks:
       - net
     restart: "always"

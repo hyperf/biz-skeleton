@@ -17,8 +17,6 @@ unit:
   variables:
     DOCKER_TLS_CERTDIR: ""
     DOCKER_DRIVER: overlay2
-  before_script:
-    - cp .env.example .env
   script:
     - APP_ENV=test docker-compose up -d --remove-orphans --build
     - docker exec $(basename $(pwd))_hyperf_1 composer install
