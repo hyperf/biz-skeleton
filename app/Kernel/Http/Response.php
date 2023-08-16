@@ -12,13 +12,13 @@ declare(strict_types=1);
 
 namespace App\Kernel\Http;
 
-use Hyperf\Context\Context;
+use Hyperf\Context\ResponseContext;
 use Hyperf\HttpMessage\Cookie\Cookie;
 use Hyperf\HttpMessage\Exception\HttpException;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface as PsrResponseInterface;
+use Swow\Psr7\Message\ResponsePlusInterface;
 
 class Response
 {
@@ -31,7 +31,7 @@ class Response
         $this->response = $container->get(ResponseInterface::class);
     }
 
-    public function success(mixed $data = []): PsrResponseInterface
+    public function success(mixed $data = []): ResponsePlusInterface
     {
         return $this->response->json([
             'code' => 0,
@@ -39,7 +39,7 @@ class Response
         ]);
     }
 
-    public function fail(int $code, string $message = ''): PsrResponseInterface
+    public function fail(int $code, string $message = ''): ResponsePlusInterface
     {
         return $this->response->json([
             'code' => $code,
@@ -47,30 +47,29 @@ class Response
         ]);
     }
 
-    public function redirect($url, int $status = 302): PsrResponseInterface
+    public function redirect($url, int $status = 302): ResponsePlusInterface
     {
         return $this->response()
-            ->withAddedHeader('Location', (string) $url)
-            ->withStatus($status);
+            ->setHeader('Location', (string) $url)
+            ->setStatus($status);
     }
 
     public function cookie(Cookie $cookie)
     {
-        $response = $this->response()->withCookie($cookie);
-        Context::set(PsrResponseInterface::class, $response);
+        ResponseContext::set($this->response()->withCookie($cookie));
         return $this;
     }
 
-    public function handleException(HttpException $throwable): PsrResponseInterface
+    public function handleException(HttpException $throwable): ResponsePlusInterface
     {
         return $this->response()
-            ->withAddedHeader('Server', 'Hyperf')
-            ->withStatus($throwable->getStatusCode())
-            ->withBody(new SwooleStream($throwable->getMessage()));
+            ->addHeader('Server', 'Hyperf')
+            ->setStatus($throwable->getStatusCode())
+            ->setBody(new SwooleStream($throwable->getMessage()));
     }
 
-    public function response(): PsrResponseInterface
+    public function response(): ResponsePlusInterface
     {
-        return Context::get(PsrResponseInterface::class);
+        return ResponseContext::get();
     }
 }
