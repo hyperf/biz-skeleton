@@ -82,4 +82,12 @@ class ExampleTest extends HttpTestCase
         $this->assertInstanceOf(FactoryResolver::class, $resolver2);
         $this->assertSame($resolver2, $dispatcher->factoryResolver);
     }
+
+    /**
+     * @group OpenSSL
+     */
+    public function testOpenSSL()
+    {
+        $this->assertNotFalse(openssl_encrypt('12345', 'bf', 'xxxxxxxx', 0, 'xxxxxxxx'));
+    }
 }
