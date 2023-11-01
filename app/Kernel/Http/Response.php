@@ -13,7 +13,9 @@ declare(strict_types=1);
 namespace App\Kernel\Http;
 
 use Hyperf\Context\ResponseContext;
+use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\HttpMessage\Cookie\Cookie;
+use Hyperf\HttpMessage\Exception\BadRequestHttpException;
 use Hyperf\HttpMessage\Exception\HttpException;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface;
@@ -62,6 +64,10 @@ class Response
 
     public function handleException(HttpException $throwable): ResponsePlusInterface
     {
+        if ($throwable instanceof BadRequestHttpException) {
+            di()->get(StdoutLoggerInterface::class)->warning('body: ' . $throwable->getRequest()?->getBody() . ' ' . $throwable);
+        }
+
         return $this->response()
             ->addHeader('Server', 'Hyperf')
             ->setStatus($throwable->getStatusCode())
