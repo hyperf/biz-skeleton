@@ -81,10 +81,10 @@
         "post-autoload-dump": [
             "rm -rf runtime/container"
         ],
-        "analyse": "phpstan analyse --memory-limit 512M -l 0 -c phpstan.neon ./app ./config",
+        "analyse": "phpstan analyse --memory-limit 512M",
         "cs-fix": "php-cs-fixer fix $1",
         "start": "php ./bin/hyperf.php start",
-        "test": "co-phpunit --prepend test/bootstrap.php -c phpunit.xml --colors=always",
+        "test": "co-phpunit --prepend test/bootstrap.php --colors=always",
         "rector": "rector process --clear-cache"
     }
 }
