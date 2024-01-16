@@ -9,6 +9,10 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
+use Hyperf\Contract\ApplicationInterface;
+use Hyperf\Di\ClassLoader;
+use Swoole\Runtime;
+
 use function Hyperf\Support\swoole_hook_flags;
 
 error_reporting(E_ALL);
@@ -19,10 +23,10 @@ date_default_timezone_set('Asia/Shanghai');
 
 require BASE_PATH . '/vendor/autoload.php';
 
-Swoole\Runtime::enableCoroutine(true, swoole_hook_flags());
+Runtime::enableCoroutine(true, swoole_hook_flags());
 
-Hyperf\Di\ClassLoader::init();
+ClassLoader::init();
 
 $container = require BASE_PATH . '/config/container.php';
 
-$container->get(Hyperf\Contract\ApplicationInterface::class);
+$container->get(ApplicationInterface::class);

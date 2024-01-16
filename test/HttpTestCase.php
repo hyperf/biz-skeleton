@@ -32,9 +32,9 @@ abstract class HttpTestCase extends TestCase
      */
     protected $client;
 
-    public function __construct($name = null, array $data = [], $dataName = '')
+    public function __construct(string $name)
     {
-        parent::__construct($name, $data, $dataName);
+        parent::__construct($name);
         $this->client = make(Testing\Client::class);
         // $this->client = make(Testing\HttpClient::class, ['baseUri' => 'http://127.0.0.1:9501']);
     }
