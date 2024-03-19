@@ -16,5 +16,5 @@ use BackedEnum;
 
 interface ErrorCodeInterface extends BackedEnum
 {
-    public function getMessage(array $translate = null): string;
+    public function getMessage(?array $translate = null): string;
 }

@@ -13,11 +13,12 @@ use Hyperf\AsyncQueue\Driver\DriverFactory;
 use Hyperf\AsyncQueue\JobInterface;
 use Hyperf\Context\ApplicationContext;
 use Hyperf\ExceptionHandler\Formatter\FormatterInterface;
+use Psr\Container\ContainerInterface;
 
 if (! function_exists('di')) {
     /**
      * Finds an entry of the container by its identifier and returns it.
-     * @return mixed|\Psr\Container\ContainerInterface
+     * @return ContainerInterface|mixed
      */
     function di(?string $id = null)
     {

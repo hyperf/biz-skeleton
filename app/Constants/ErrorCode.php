@@ -25,7 +25,7 @@ enum ErrorCode: int implements ErrorCodeInterface
      */
     case SERVER_ERROR = 500;
 
-    public function getMessage(array $translate = null): string
+    public function getMessage(?array $translate = null): string
     {
         $arguments = [];
         if ($translate) {

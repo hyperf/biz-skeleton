@@ -18,7 +18,7 @@ use Throwable;
 
 class BusinessException extends ServerException
 {
-    public function __construct(ErrorCodeInterface $code, string $message = null, Throwable $previous = null)
+    public function __construct(ErrorCodeInterface $code, ?string $message = null, ?Throwable $previous = null)
     {
         if (is_null($message)) {
             $message = $code->getMessage();
