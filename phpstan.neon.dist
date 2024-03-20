@@ -15,3 +15,14 @@ parameters:
   ignoreErrors:
     - '#Static call to instance method Hyperf\\HttpServer\\Router\\Router::[a-zA-Z0-9\\_]+\(\)#'
     - '#Static call to instance method Hyperf\\DbConnection\\Db::[a-zA-Z0-9\\_]+\(\)#'
+
+services:
+  # When using `match` to match enum, the enumeration must be completely overwritten
+  - class: PHPStan\Rules\Comparison\MatchExpressionRule
+    arguments:
+      checkAlwaysTrueStrictComparison: %checkAlwaysTrueStrictComparison%
+      disableUnreachable: %featureToggles.disableUnreachableBranchesRules%
+      reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
+      treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
+    tags:
+      - phpstan.rules.rule
