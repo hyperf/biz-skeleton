@@ -21,8 +21,8 @@ return [
             'mixin',
         ],
         'class_map' => [
-            Coroutine::class => BASE_PATH . '/app/Kernel/ClassMap/Coroutine.php',
-            ResolverDispatcher::class => BASE_PATH . '/app/Kernel/ClassMap/ResolverDispatcher.php',
+            Coroutine::class => BASE_PATH . '/storage/classes/Coroutine.php',
+            ResolverDispatcher::class => BASE_PATH . '/storage/classes/ResolverDispatcher.php',
         ],
     ],
 ];
