@@ -23,7 +23,7 @@ date_default_timezone_set('Asia/Shanghai');
 
 require BASE_PATH . '/vendor/autoload.php';
 
-Runtime::enableCoroutine(true, swoole_hook_flags());
+Runtime::enableCoroutine(swoole_hook_flags());
 
 ClassLoader::init();
 
