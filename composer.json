@@ -37,6 +37,7 @@
         "hyperf/framework": "3.1.*",
         "hyperf/guzzle": "3.1.*",
         "hyperf/http-server": "3.1.*",
+        "hyperf/laminas-mime": "^3.0",
         "hyperf/logger": "3.1.*",
         "hyperf/model-cache": "3.1.*",
         "hyperf/polyfill-coroutine": "3.1.*",
