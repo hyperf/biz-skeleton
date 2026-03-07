@@ -15,25 +15,28 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 
 return [
-    'default' => [
-        'handler' => [
-            'class' => StreamHandler::class,
-            'constructor' => [
-                'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
-                'level' => Level::Info,
+    'default' => 'default',
+    'channels' => [
+        'default' => [
+            'handler' => [
+                'class' => StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
+                    'level' => Level::Info,
+                ],
             ],
-        ],
-        'formatter' => [
-            'class' => LineFormatter::class,
-            'constructor' => [
-                'format' => null,
-                'dateFormat' => 'Y-m-d H:i:s',
-                'allowInlineLineBreaks' => true,
+            'formatter' => [
+                'class' => LineFormatter::class,
+                'constructor' => [
+                    'format' => null,
+                    'dateFormat' => 'Y-m-d H:i:s',
+                    'allowInlineLineBreaks' => true,
+                ],
             ],
-        ],
-        'processors' => [
-            [
-                'class' => AppendRequestIdProcessor::class,
+            'processors' => [
+                [
+                    'class' => AppendRequestIdProcessor::class,
+                ],
             ],
         ],
     ],
