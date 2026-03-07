@@ -4,8 +4,10 @@
 # vendor/bin/phpstan analyse app --memory-limit 200M -l 0
 #
 includes:
+  - vendor/phpstan/phpstan-strict-rules/rules.neon
   # 需要执行 composer require phpstan/phpstan-deprecation-rules --dev
   # - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
 parameters:
   level: 0
   paths:
@@ -24,9 +26,6 @@ services:
   # When using `match` to match enum, the enumeration must be completely overwritten
   - class: PHPStan\Rules\Comparison\MatchExpressionRule
     arguments:
-      checkAlwaysTrueStrictComparison: %checkAlwaysTrueStrictComparison%
-      disableUnreachable: %featureToggles.disableUnreachableBranchesRules%
-      reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
       treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
     tags:
       - phpstan.rules.rule
