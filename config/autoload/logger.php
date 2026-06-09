@@ -10,8 +10,9 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 use App\Kernel\Log\AppendRequestIdProcessor;
+use Hyperf\Logger\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
+use Monolog\Handler\StreamHandler as MonologStreamHandler;
 use Monolog\Level;
 
 return [
@@ -19,7 +20,7 @@ return [
     'channels' => [
         'default' => [
             'handler' => [
-                'class' => StreamHandler::class,
+                'class' => class_exists(StreamHandler::class) ? StreamHandler::class : MonologStreamHandler::class,
                 'constructor' => [
                     'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
                     'level' => Level::Info,
