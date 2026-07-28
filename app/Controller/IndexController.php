@@ -12,9 +12,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Psr\Http\Message\ResponseInterface;
+
 class IndexController extends Controller
 {
-    public function index()
+    public function index(): ResponseInterface
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();

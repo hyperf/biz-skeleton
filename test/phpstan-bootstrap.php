@@ -9,15 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
-namespace App\Constants;
-
-use BackedEnum;
-
-interface ErrorCodeInterface extends BackedEnum
-{
-    /**
-     * @param null|array<string, string> $translate
-     */
-    public function getMessage(?array $translate = null): string;
+if (! defined('BASE_PATH')) {
+    define('BASE_PATH', dirname(__DIR__));
 }

@@ -10,7 +10,9 @@ includes:
   # - vendor/phpstan/phpstan-deprecation-rules/rules.neon
 
 parameters:
-  level: 0
+  level: 8
+  bootstrapFiles:
+    - test/phpstan-bootstrap.php
   paths:
     - app
     - config

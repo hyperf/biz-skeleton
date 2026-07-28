@@ -24,6 +24,7 @@ class BusinessException extends ServerException
             $message = $code->getMessage();
         }
 
-        parent::__construct($message, $code->value, $previous);
+        parent::__construct($message, previous: $previous);
+        $this->code = $code->value;
     }
 }

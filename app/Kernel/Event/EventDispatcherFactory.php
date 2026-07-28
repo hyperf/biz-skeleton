@@ -18,7 +18,7 @@ use Psr\EventDispatcher\ListenerProviderInterface;
 
 class EventDispatcherFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): EventDispatcher
     {
         $listeners = $container->get(ListenerProviderInterface::class);
         return new EventDispatcher($listeners);

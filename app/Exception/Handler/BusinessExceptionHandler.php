@@ -22,6 +22,7 @@ use Hyperf\HttpMessage\Exception\HttpException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Swow\Psr7\Message\ResponsePlusInterface;
 use Throwable;
 
 class BusinessExceptionHandler extends ExceptionHandler
@@ -36,7 +37,7 @@ class BusinessExceptionHandler extends ExceptionHandler
         $this->logger = $container->get(StdoutLoggerInterface::class);
     }
 
-    public function handle(Throwable $throwable, ResponseInterface $response)
+    public function handle(Throwable $throwable, ResponseInterface $response): ResponsePlusInterface
     {
         switch (true) {
             case $throwable instanceof HttpException:

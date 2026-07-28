@@ -25,7 +25,7 @@ class RPCExceptionHandler extends ExceptionHandler
     {
     }
 
-    public function handle(Throwable $throwable, ResponseInterface $response)
+    public function handle(Throwable $throwable, ResponseInterface $response): ResponseInterface
     {
         if ($throwable instanceof BusinessException) {
             $this->logger->warning($this->formatter->format($throwable));

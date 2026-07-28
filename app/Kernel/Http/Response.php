@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Kernel\Http;
 
+use Hyperf\Codec\Json;
 use Hyperf\Context\ResponseContext;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\HttpMessage\Cookie\Cookie;
@@ -20,6 +21,7 @@ use Hyperf\HttpMessage\Exception\HttpException;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
+use Stringable;
 use Swow\Psr7\Message\ResponsePlusInterface;
 
 class Response
@@ -33,9 +35,17 @@ class Response
         $this->response = $container->get(ResponseInterface::class);
     }
 
+    public function json(mixed $data): ResponsePlusInterface
+    {
+        $data = Json::encode($data);
+        return $this->response()
+            ->addHeader('content-type', 'application/json; charset=utf-8')
+            ->setBody(new SwooleStream($data));
+    }
+
     public function success(mixed $data = []): ResponsePlusInterface
     {
-        return $this->response->json([
+        return $this->json([
             'code' => 0,
             'data' => $data,
         ]);
@@ -43,21 +53,22 @@ class Response
 
     public function fail(int $code, string $message = ''): ResponsePlusInterface
     {
-        return $this->response->json([
+        return $this->json([
             'code' => $code,
             'message' => $message,
         ]);
     }
 
-    public function redirect($url, int $status = 302): ResponsePlusInterface
+    public function redirect(string|Stringable $url, int $status = 302): ResponsePlusInterface
     {
         return $this->response()
             ->setHeader('Location', (string) $url)
             ->setStatus($status);
     }
 
-    public function cookie(Cookie $cookie)
+    public function cookie(Cookie $cookie): static
     {
+        /* @phpstan-ignore-next-line */
         ResponseContext::set($this->response()->withCookie($cookie));
         return $this;
     }
