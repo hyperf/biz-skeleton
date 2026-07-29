@@ -13,6 +13,8 @@ parameters:
   level: 8
   bootstrapFiles:
     - test/phpstan-bootstrap.php
+  universalObjectCratesClasses:
+    - Hyperf\Database\Model\Model
   paths:
     - app
     - config
@@ -24,6 +26,7 @@ parameters:
   ignoreErrors:
     - '#Static call to instance method Hyperf\\HttpServer\\Router\\Router::[a-zA-Z0-9\\_]+\(\)#'
     - '#Static call to instance method Hyperf\\DbConnection\\Db::[a-zA-Z0-9\\_]+\(\)#'
+    - '#Class App\\Model\\.* has PHPDoc tag \@property for property \$.* with no value type specified in iterable type array#'
 
 services:
   # When using `match` to match enum, the enumeration must be completely overwritten

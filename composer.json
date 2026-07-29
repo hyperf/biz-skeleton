@@ -43,8 +43,7 @@
         "hyperf/pool": "3.2.*",
         "hyperf/process": "3.2.*",
         "hyperf/redis": "3.2.*",
-        "hyperf/server": "3.2.*",
-        "hyperf/utils": "3.2.*"
+        "hyperf/server": "3.2.*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",

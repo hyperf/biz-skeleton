@@ -48,6 +48,7 @@ return [
                 'uses' => '',
                 'refresh_fillable' => true,
                 'table_mapping' => [],
+                'property_nullable' => true,
             ],
         ],
     ],
