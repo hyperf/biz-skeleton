@@ -1,5 +1,5 @@
 ---
-name: vision-worker
+name: vision-agent
 description: 视觉处理子代理。处理涉及图片、截图、照片、图表、UI 界面、PDF 页面等视觉内容的任务：读取图片内容、OCR 文字提取、图片描述、视觉分析、截图理解、图片中代码/表格识别。只要用户输入包含图片或要求"看图""读图""这张图""截图里"，就使用此 agent。
 tools: Read, Glob, Grep
 model: unknown    # "待确认"哨兵：主线调用前先向开发者确认视觉模型 ID 并写回此处；确认后不再询问，除非开发者要求更换

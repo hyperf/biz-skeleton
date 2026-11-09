@@ -3,14 +3,14 @@
 
 - `explore-agent`（`.claude/agents/explore-agent.md`）：只读调研，输出【范围/现状/风险点/方案/拒绝】。
 - `verify-agent`（`.claude/agents/verify-agent.md`）：跑测试与校验，只回传通过/失败摘要。
-- `vision-worker`（`.claude/agents/vision-worker.md`）：视觉处理，读取图片/截图/PDF 页面，输出 OCR 与结构化分析摘要。
+- `vision-agent`（`.claude/agents/vision-agent.md`）：视觉处理，读取图片/截图/PDF 页面，输出 OCR 与结构化分析摘要。
 
 调用示例：
 > @explore-agent 任务：梳理【xxx模块】，输出可执行的修改方案。
 > @verify-agent 任务：执行单元测试，返回精简结果。
-> @vision-worker 任务：读取【xxx.png】，提取图中文字并描述界面结构。
+> @vision-agent 任务：读取【xxx.png】，提取图中文字并描述界面结构。
 
-> 注：`vision-worker` 的 `model: unknown` 是"待确认"哨兵。主线调用 @vision-worker 前先检查该字段：若仍是 `unknown`，先向开发者确认网关中可用的视觉模型 ID 并写回 frontmatter，再执行调用；确认后默认不再询问，除非开发者要求更换。
+> 注：`vision-agent` 的 `model: unknown` 是"待确认"哨兵。主线调用 @vision-agent 前先检查该字段：若仍是 `unknown`，先向开发者确认网关中可用的视觉模型 ID 并写回 frontmatter，再执行调用；确认后默认不再询问，除非开发者要求更换。
 
 # 项目固定知识（按需改成你自己项目）
 ## 项目结构约定
