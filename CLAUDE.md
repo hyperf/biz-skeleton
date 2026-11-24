@@ -19,6 +19,7 @@
 - 项目源码目录: app
 - 静态监测命令：composer analyse
 - 单元测试命令：composer test
+- 代码风格格式化命令：composer cs-fix
 
 ## 主线工作流（plan 模式）
 1. 用户提出需求
